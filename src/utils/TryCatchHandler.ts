@@ -4,6 +4,6 @@ import ErrorHandler from './ErrorHandler.js';
 
 export const TryCatch = (func:ControllerType)=>{
     return (req:Request,res:Response,next:NextFunction)=>{
-       Promise.resolve(func(req,res,next)).catch((err) => next(new ErrorHandler(err.message, 400)));
+       Promise.resolve(func(req,res,next)).catch((err) => next(new ErrorHandler(err.message, err.statusCode)));
    }
 }

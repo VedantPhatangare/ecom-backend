@@ -1,5 +1,6 @@
 import express from 'express'
 import { deleteUser, getAllUsers, getUser, newUser } from '../controllers/user.controller.js';
+import { adminOnly } from '../middlewares/auth.middleware.js';
 
 const userRoute = express.Router();
 
@@ -7,10 +8,9 @@ const userRoute = express.Router();
 userRoute.post("/new",newUser)
 
 // route - api/v1/user/all
-userRoute.get("/all",getAllUsers)
+userRoute.get("/all",adminOnly ,getAllUsers)
 
 // route - api/v1/user/:dynamicID
-userRoute.get("/:id",getUser)
-userRoute.delete("/:id",deleteUser)
 
+userRoute.route("/:id").get(getUser).delete(adminOnly,deleteUser)
 export default userRoute

@@ -6,7 +6,7 @@ import ErrorHandler from "../utils/ErrorHandler.js";
 
 export const newUser = TryCatch(
     async(req:Request<{},{},UserReqBody>,res:Response,next:NextFunction)=>{
-        // throw new Error('This is an error');
+        // throw new ErrorHandler('This is an error',500);
     const {name,email,photo,gender,_id,dob}= req.body;
     let user = await User.findById(_id);
     if(user){

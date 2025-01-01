@@ -12,4 +12,4 @@ export type ControllerType = (
     req: Request, 
     res: Response,
     next: NextFunction
-) => Promise<Response<any, Record<string, any> > | void>
+) => Promise<Response<any, Record<string, Number> > | void>
